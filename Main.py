@@ -19,7 +19,7 @@ SCREEN_TITLE = "Digging Game - Graeme Hodgson"
 
 # Constants used to scale our sprites from their original size
 TILE_SCALING = 1
-CHARACTER_SCALING = TILE_SCALING / 1.6
+CHARACTER_SCALING = TILE_SCALING / 2.5
 GOLD_SCALING = TILE_SCALING
 Coal_SCALING = TILE_SCALING
 SPRITE_PIXEL_SIZE = 128
@@ -70,6 +70,7 @@ class PlayerCharacter(arcade.Sprite):
         self.character_face_direction = RIGHT_FACING
 
         # Variables that will hold sprite lists
+        self.walls_list = None
         self.player_list = None
         self.platforms_list = None
         self.bullet_list = None
@@ -149,6 +150,7 @@ class MyGame(arcade.Window):
 
         # These are 'lists' that keep track of our sprites. Each sprite should
         # go into a list.
+        self.walls_list = None
         self.gold_list = None
         self.coal_list = None
         self.background_list = None
@@ -187,6 +189,7 @@ class MyGame(arcade.Window):
         self.score = 0
 
         # Create the Sprite lists
+        self.walls_list = arcade.SpriteList()
         self.player_list = arcade.SpriteList()
         self.background_list = arcade.SpriteList()
         self.gold_list = arcade.SpriteList()
@@ -203,6 +206,7 @@ class MyGame(arcade.Window):
         # --- Load in a map from the tiled editor ---
 
         # Name of the layer in the file that has our platforms this contains dirt block
+        walls_layer_name = 'Walls'
         platforms_layer_name = 'Platforms'
 
         # Names of the layers that has items for picking up
@@ -218,11 +222,18 @@ class MyGame(arcade.Window):
         # Calculate the right edge of the my_map in pixels
         self.end_of_map = my_map.map_size.width * GRID_PIXEL_SIZE
 
+        # -- Walls to stop player from falling off the screen
+        self.walls_list = arcade.tilemap.process_layer(my_map,
+                                                       walls_layer_name,
+                                                       TILE_SCALING,
+                                                       use_spatial_hash=True)
+
         # -- Platforms
         self.platforms_list = arcade.tilemap.process_layer(my_map,
                                                            platforms_layer_name,
                                                            TILE_SCALING,
                                                            use_spatial_hash=True)
+
 
         # -- Background objects
         self.background_list = arcade.tilemap.process_layer(my_map, "Background", TILE_SCALING)
@@ -245,7 +256,7 @@ class MyGame(arcade.Window):
         # Create the 'physics engine'
         self.physics_engine = arcade.PhysicsEnginePlatformer(self.player_sprite,
                                                              self.platforms_list,
-                                                             gravity_constant=GRAVITY,)
+                                                             gravity_constant=GRAVITY)
 
     def on_draw(self):
         """ Render the screen. """
@@ -254,6 +265,7 @@ class MyGame(arcade.Window):
         arcade.start_render()
 
         # Draw our sprites
+        self.walls_list.draw()
         self.background_list.draw()
         self.platforms_list.draw()
         self.gold_list.draw()
