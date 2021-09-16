@@ -202,7 +202,7 @@ class MyGame(arcade.Window):
 
         # --- Load in a map from the tiled editor ---
 
-        # Name of the layer in the file that has our platforms
+        # Name of the layer in the file that has our platforms this contains dirt block
         platforms_layer_name = 'Platforms'
 
         # Names of the layers that has items for picking up
@@ -210,7 +210,7 @@ class MyGame(arcade.Window):
         coal_layer_name = 'Coal'
 
         # Map name
-        map_name = f"Tiled_Maps/Map44.tmx"
+        map_name = f"Tiled_Maps/Map2.tmx"
 
         # Read in the tiled map
         my_map = arcade.tilemap.read_tmx(map_name)
@@ -240,7 +240,7 @@ class MyGame(arcade.Window):
         # --- Other stuff ie the physics engine which
         # Set the background color
         # if my_map.background_color:
-        # arcade.set_background_color(my_map.background_color)
+        #     arcade.set_background_color(my_map.background_color)
 
         # Create the 'physics engine'
         self.physics_engine = arcade.PhysicsEnginePlatformer(self.player_sprite,
@@ -273,7 +273,7 @@ class MyGame(arcade.Window):
         """
 
         # Create a bullet
-        bullet = arcade.Sprite("laserBlue01.png", SPRITE_SCALING_LASER)
+        bullet = arcade.Sprite("Images/laserBlue01.png", SPRITE_SCALING_LASER)
 
         # Position the bullet at the player's current location
         start_x = self.player_sprite.center_x  # position where the character at any point on the screen
@@ -332,10 +332,6 @@ class MyGame(arcade.Window):
             # For every block we hit, add to the score and remove the block
             for platforms in hit_list:
                 platforms.remove_from_sprite_lists()
-
-            # If the bullet flies off-screen, remove it.
-            if bullet.bottom > SCREEN_WIDTH:
-                bullet.remove_from_sprite_lists()
 
     def process_keychange(self):
         """
