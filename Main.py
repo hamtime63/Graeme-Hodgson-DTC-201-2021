@@ -151,7 +151,7 @@ class MyGame(arcade.Window):
         # go into a list.
         self.gold_list = None
         self.coal_list = None
-        # self.background_list = None
+        self.background_list = None
         self.player_list = None
         self.bullet_list = None
         self.platforms_list = None
@@ -188,7 +188,7 @@ class MyGame(arcade.Window):
 
         # Create the Sprite lists
         self.player_list = arcade.SpriteList()
-        # self.background_list = arcade.SpriteList()
+        self.background_list = arcade.SpriteList()
         self.gold_list = arcade.SpriteList()
         self.coal_list = arcade.SpriteList()
         self.bullet_list = arcade.SpriteList()
@@ -225,7 +225,7 @@ class MyGame(arcade.Window):
                                                            use_spatial_hash=True)
 
         # -- Background objects
-        # self.background_list = arcade.tilemap.process_layer(my_map, "Background", TILE_SCALING)
+        self.background_list = arcade.tilemap.process_layer(my_map, "Background", TILE_SCALING)
 
         # Gold
         self.gold_list = arcade.tilemap.process_layer(my_map, gold_layer_name,
@@ -239,8 +239,8 @@ class MyGame(arcade.Window):
 
         # --- Other stuff ie the physics engine which
         # Set the background color
-        # if my_map.background_color:
-        #     arcade.set_background_color(my_map.background_color)
+        if my_map.background_color:
+            arcade.set_background_color(my_map.background_color)
 
         # Create the 'physics engine'
         self.physics_engine = arcade.PhysicsEnginePlatformer(self.player_sprite,
@@ -254,7 +254,7 @@ class MyGame(arcade.Window):
         arcade.start_render()
 
         # Draw our sprites
-        # self.background_list.draw()
+        self.background_list.draw()
         self.platforms_list.draw()
         self.gold_list.draw()
         self.coal_list.draw()
@@ -373,7 +373,7 @@ class MyGame(arcade.Window):
         self.physics_engine.update()
         self.gold_list.update_animation(delta_time)
         self.coal_list.update_animation(delta_time)
-        # self.background_list.update_animation(delta_time)
+        self.background_list.update_animation(delta_time)
         self.player_list.update_animation(delta_time)
         self.bullet_list.update_animation(delta_time)
 
