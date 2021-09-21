@@ -13,8 +13,8 @@ import arcade
 import pyglet
 
 # Constants
-SCREEN_WIDTH = 1000
-SCREEN_HEIGHT = 500
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 700
 SCREEN_TITLE = "Digging Game - Graeme Hodgson"
 
 # Constants used to scale our sprites from their original size
@@ -297,7 +297,7 @@ class MyGame(arcade.Window):
         bullet.change_y = BULLET_SPEED
         bullet.change_x = BULLET_SPEED
 
-        # Get from the mouse the destination location for the bullet
+        # Get from the mouse the destination location for the
         # IMPORTANT! If you have a scrolling screen, you will also need
         # to add in self.view_bottom and self.view_left.
         dest_x = self.view_left + x
