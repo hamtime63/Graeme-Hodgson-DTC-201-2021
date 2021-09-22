@@ -2,7 +2,7 @@
 Digging Game
 
 This is my really fun game about shooting your way to the bottom,
-once you reach the bottom you get as much gold and coal as you want,
+once you reach the bottom you get as much gold as you want,
 that's the point of the game
 """
 
