@@ -234,7 +234,6 @@ class MyGame(arcade.Window):
                                                            TILE_SCALING,
                                                            use_spatial_hash=True)
 
-
         # -- Background objects
         self.background_list = arcade.tilemap.process_layer(my_map, "Background", TILE_SCALING)
 
