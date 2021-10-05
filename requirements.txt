@@ -1,0 +1,3 @@
+install arcade
+install math
+install os
