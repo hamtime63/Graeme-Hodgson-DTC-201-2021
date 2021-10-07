@@ -1,4 +1,0 @@
-arcade == 2.5.7
-math
-os
-pyglet
