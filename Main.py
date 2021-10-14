@@ -1,16 +1,33 @@
 ﻿"""
-Digging Game
+The Ancient Digging Game
 
-This is my really fun game about shooting your way to the bottom,
-once you reach the bottom you get as much gold as you want,
-that's the point of the game
+This is a really fun game about shooting your way to the bottom
+of the map and, once you reach the bottom you get as much gold as you want,
+that's the point of the game, on the way down you should be collecting the
+gold and coal blocks but you can skip them and just shoot your way to the
+bottom and get what you want that way, but the catch is you can’t fall out
+of the map or jump, so once you are down the bottom, you are stuck there,
+so the bigger the hole you dig the worse it is for you...
+
+Enjoy playing the game...
 """
+
 
 import math
 import os
 
 import arcade
 import pyglet
+
+"""
+INFORMATION
+
+The code length is 495 lines long, read the "README.md" file
+attached to this folder, it should have opened up before you
+even accessed this particular document, there are certain 
+requirements for this code file, so that's why it pays to 
+read the README.md file.
+"""
 
 # Constants
 SCREEN_WIDTH = 1200
